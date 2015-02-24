@@ -37,8 +37,10 @@ python_configure = ["./configure",
                     "--enable-universalsdk=/",
                     "--prefix=#{install_dir}/embedded"]
 
-if ENV['PKG_TYPE'] == 'dmg'
-  python_configure.push('--enable-ipv6', '--with-universal-archs=intel')
+if Ohai['platform_family'] == 'mac_os_x' 
+  python_configure.push('--enable-ipv6',
+                        '--with-universal-archs=intel',
+                        '--enable-shared')
 end
 
 python_configure.push("--with-dbmliborder=")
@@ -46,7 +48,7 @@ python_configure.push("--with-dbmliborder=")
 build do
   license "PSFL"
   command python_configure.join(" "), :env => env
-  patch :source => "disable_sslv3.patch" if ENV['PKG_TYPE'] == 'dmg'
+  patch :source => "disable_sslv3.patch" if Ohai['platform_family'] == 'mac_os_x'
   command "make -j #{workers}", :env => env
   command "make install", :env => env
   command "rm -rf #{install_dir}/embedded/lib/python2.7/test"
