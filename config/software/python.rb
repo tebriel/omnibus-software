@@ -37,7 +37,7 @@ python_configure = ["./configure",
                     "--enable-universalsdk=/",
                     "--prefix=#{install_dir}/embedded"]
 
-if Ohai['platform_family'] == 'mac_os_x' 
+if Ohai['platform_family'] == 'mac_os_x'
   python_configure.push('--enable-ipv6',
                         '--with-universal-archs=intel',
                         '--enable-shared')
