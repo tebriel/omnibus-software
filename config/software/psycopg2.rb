@@ -17,5 +17,5 @@ build do
   # else
   #   command "#{install_dir}/embedded/bin/pip install -I #{name}==#{version}", :env => env
   # end
-  pip_call "install -I #{name}==#{version}", :env => env
+  pip "install -I #{name}==#{version}", :env => env
 end

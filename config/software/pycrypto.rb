@@ -9,5 +9,5 @@ if ohai['platform'] == 'windows'
 end
 
 build do
-  pip_call "install -I #{name}==#{version}"
+  pip "install -I #{name}==#{version}"
 end

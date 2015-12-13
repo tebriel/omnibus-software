@@ -14,5 +14,5 @@ dependency "pip"
 # Required by snakebite
 
 build do
-    pip_call "install -I #{name}==#{version}"
+    pip "install -I #{name}==#{version}"
 end
