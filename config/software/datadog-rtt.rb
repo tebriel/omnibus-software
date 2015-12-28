@@ -15,6 +15,7 @@ end
 
 build do
    ship_license "https://raw.githubusercontent.com/DataDog/dd-tcp-rtt/master/LICENSE"
+   command "git config --local url.\"git@github.com:\".insteadOf \"https://github.com/\"", :env => env, :cwd => "/var/cache/omnibus/src/datadog-rtt/src/github.com/DataDog/dd-tcp-rtt"
    command "#{gobin} get -d -u github.com/DataDog/dd-tcp-rtt", :env => env
    command "git checkout #{default_version} && git pull", :env => env, :cwd => "/var/cache/omnibus/src/datadog-rtt/src/github.com/DataDog/dd-tcp-rtt"
     patch :source => "libpcap-static-link.patch", :plevel => 0, :target => "$GOPATH/src/github.com/google/gopacket"
