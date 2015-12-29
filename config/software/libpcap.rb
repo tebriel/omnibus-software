@@ -26,6 +26,8 @@ source url: "http://www.tcpdump.org/release/libpcap-#{version}.tar.gz"
 
 relative_path "libpcap-#{version}"
 
+dependency "flex"
+
 # we omit the omnibus path here because it breaks mac_os_x builds by picking up the embedded libtool
 # instead of the system libtool which the zlib configure script cannot handle.
 #env = with_embedded_path()
