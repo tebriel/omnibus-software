@@ -19,13 +19,13 @@ end
 build do
    ship_license "https://raw.githubusercontent.com/DataDog/dd-tcp-rtt/master/LICENSE"
    command "mkdir -p /var/cache/omnibus/src/datadog-rtt/src/github.com/DataDog", :env => env
-   command "git clone https://#{github_token}:x-oauth-basic@github.com/DataDog/dd-tcp-rtt.git", :env => env, :cwd => "$GOPATH/src/github.com/DataDog"
-   command "git checkout #{default_version} && git pull", :env => env, :cwd => "$GOPATH/src/github.com/DataDog/dd-tcp-rtt"
-   command "#{gobin} get -v -d github.com/Sirupsen/logrus", :env => env, :cwd => "$GOPATH"
-   command "#{gobin} get -v -d github.com/google/gopacket", :env => env, :cwd => "$GOPATH"
-   command "#{gobin} get -v -d github.com/DataDog/datadog-go/statsd", :env => env, :cwd => "$GOPATH"
-   command "#{gobin} get -v -d gopkg.in/yaml.v2", :env => env, :cwd => "$GOPATH"
-   command "#{gobin} get -v -d gopkg.in/tomb.v2", :env => env, :cwd => "$GOPATH"
-   patch :source => "libpcap-static-link.patch", :plevel => 0, :target => "$GOPATH/src/github.com/google/gopacket"
+   command "git clone https://#{github_token}:x-oauth-basic@github.com/DataDog/dd-tcp-rtt.git", :env => env, :cwd => "/var/cache/omnibus/src/datadog-rtt/src/github.com/DataDog"
+   command "git checkout #{default_version} && git pull", :env => env, :cwd => "/var/cache/omnibus/src/datadog-rtt/src/github.com/DataDog/dd-tcp-rtt"
+   command "#{gobin} get -v -d github.com/Sirupsen/logrus", :env => env, :cwd => "/var/cache/omnibus/src/datadog-rtt"
+   command "#{gobin} get -v -d github.com/google/gopacket", :env => env, :cwd => "/var/cache/omnibus/src/datadog-rtt"
+   command "#{gobin} get -v -d github.com/DataDog/datadog-go/statsd", :env => env, :cwd => "/var/cache/omnibus/src/datadog-rtt"
+   command "#{gobin} get -v -d gopkg.in/yaml.v2", :env => env, :cwd => "/var/cache/omnibus/src/datadog-rtt"
+   command "#{gobin} get -v -d gopkg.in/tomb.v2", :env => env, :cwd => "/var/cache/omnibus/src/datadog-rtt"
+   patch :source => "libpcap-static-link.patch", :plevel => 0, :target => "/var/cache/omnibus/src/datadog-rtt/src/github.com/google/gopacket"
    command "#{gobin} build -o #{install_dir}/bin/dd-tcp-rtt $GOPATH/src/github.com/DataDog/dd-tcp-rtt", :env => env
 end
