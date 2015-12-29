@@ -18,12 +18,10 @@ end
 
 build do
    ship_license "https://raw.githubusercontent.com/DataDog/dd-tcp-rtt/master/LICENSE"
-   # command "git config --global url.\"git@github.com:\".insteadOf \"https://github.com/\"", :env => env
-   # command "#{gobin} get -d -u github.com/DataDog/dd-tcp-rtt", :env => env
    command "mkdir -p /var/cache/omnibus/src/datadog-rtt/src/github.com/DataDog", :env => env
    command "git clone https://#{github_token}:x-oauth-basic@github.com/DataDog/dd-tcp-rtt.git", :env => env, :cwd => "/var/cache/omnibus/src/datadog-rtt/src/github.com/DataDog"
    command "git checkout #{default_version} && git pull", :env => env, :cwd => "/var/cache/omnibus/src/datadog-rtt/src/github.com/DataDog/dd-tcp-rtt"
-   command "#{gobin} get -d -u ./...", :env => env, :cwd => "/var/cache/omnibus/src/datadog-rtt/src/github.com/DataDog/dd-tcp-rtt"
+   command "#{gobin} get -d ./...", :env => env, :cwd => "/var/cache/omnibus/src/datadog-rtt/src/github.com/DataDog/dd-tcp-rtt"
    patch :source => "libpcap-static-link.patch", :plevel => 0, :target => "$GOPATH/src/github.com/google/gopacket"
    command "#{gobin} build -o #{install_dir}/bin/dd-tcp-rtt $GOPATH/src/github.com/DataDog/dd-tcp-rtt", :env => env
 end
