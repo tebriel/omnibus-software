@@ -1,10 +1,10 @@
 name "bison"
-default_version "3.0"
+default_version "3.0.4"
 
-relative_path "bison-3.0"
+relative_path "bison-3.0.4"
 
-source :url => "http://ftp.gnu.org/gnu/bison/bison-3.0.tar.gz",
-       :md5 => "977106b703c7daa39c40b1ffb9347f58"
+source :url => "http://ftp.gnu.org/gnu/bison/bison-3.0.4.tar.gz",
+       :md5 => "a586e11cd4aff49c3ff6d3b6a4c9ccf8"
 
 env = with_standard_compiler_flags()
 
