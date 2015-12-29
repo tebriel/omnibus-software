@@ -7,6 +7,8 @@ env = {
   "GOPATH" => "/var/cache/omnibus/src/datadog-rtt"
 }
 
+dependency "libpcap"
+
 if ohai['platform_family'] == 'mac_os_x'
   env.delete "GOROOT"
   gobin = "/usr/local/bin/go"
