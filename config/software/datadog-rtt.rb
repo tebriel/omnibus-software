@@ -27,5 +27,5 @@ build do
    command "#{gobin} get -v -d gopkg.in/tomb.v2", :env => env, :cwd => "/var/cache/omnibus/src/datadog-rtt"
    command "#{gobin} get -v -d gopkg.in/yaml.v2", :env => env, :cwd => "/var/cache/omnibus/src/datadog-rtt"
    patch :source => "libpcap-static-link.patch", :plevel => 1, :target => "/var/cache/omnibus/src/datadog-rtt/src/github.com/google/gopacket/pcap/pcap.go"
-   command "#{gobin} build -o #{install_dir}/bin/dd-tcp-rtt $GOPATH/src/github.com/DataDog/dd-tcp-rtt", :env => env
+   command "#{gobin} build -o #{install_dir}/bin/dd-tcp-rtt github.com/DataDog/dd-tcp-rtt", :env => env, :cwd => "/var/cache/omnibus/src/datadog-rtt"
 end
