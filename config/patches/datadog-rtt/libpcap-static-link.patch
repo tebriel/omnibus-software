@@ -1,13 +1,13 @@
-diff --git a/pcap/pcap.go b/pcap/pcap.go
-index cfc8653..e54306b 100644
---- a/pcap/pcap.go
-+++ b/pcap/pcap.go
-@@ -8,10 +8,10 @@
+diff -ur a/pcap/pcap.go b/pcap/pcap.go
+--- a/pcap/pcap.go	2015-12-30 02:02:44.710877403 +0000
++++ b/pcap/pcap.go	2015-12-30 02:11:42.769664808 +0000
+@@ -8,11 +8,12 @@
  package pcap
  
  /*
 -#cgo linux LDFLAGS: -lpcap
-+#cgo linux LDFLAGS: /usr/lib/x86_64-linux-gnu/libpcap.a
++#cgo linux CFLAGS: -I/opt/datadog-agent/embedded/include
++#cgo linux LDFLAGS: /opt/datadog-agent/embedded/lib/libpcap.a
  #cgo dragonfly LDFLAGS: -lpcap
  #cgo freebsd LDFLAGS: -lpcap
  #cgo openbsd LDFLAGS: -lpcap
