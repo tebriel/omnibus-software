@@ -8,6 +8,7 @@ index cfc8653..e54306b 100644
  /*
 -#cgo linux LDFLAGS: -lpcap
 +#cgo linux LDFLAGS: /usr/lib/x86_64-linux-gnu/libpcap.a
+ #cgo dragonfly LDFLAGS: -lpcap
  #cgo freebsd LDFLAGS: -lpcap
  #cgo openbsd LDFLAGS: -lpcap
 -#cgo darwin LDFLAGS: -lpcap
