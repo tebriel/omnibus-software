@@ -6,9 +6,11 @@ if ohai['platform'] == 'windows'
 
   build do
     ship_license "https://raw.githubusercontent.com/DataDog/gohai/master/LICENSE"
-    command "#{gobin} get github.com/DataDog/gohai"
-    command "cd #{ENV['GOPATH']}\\path\\src\\github.com\\DataDog\\gohai & #{gobin} build -o "\
-            "\"#{windows_safe_path(install_dir)}\\bin\\gohai\" gohai.go"
+    command "#{gobin} get -d github.com/DataDog/gohai"
+    command "cd #{ENV['GOPATH']}\\path\\src\\github.com\\DataDog\\gohai "\
+            "& git checkout #{version} & git pull "\
+            "& #{gobin} run make.go #{gobin} "\
+            "& mv gohai.exe \"#{windows_safe_path(install_dir)}\\bin\\gohai\""
   end
 else
   env = {
